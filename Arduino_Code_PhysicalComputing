@@ -1,0 +1,113 @@
+#include <Arduino.h>
+#include <Wire.h>
+#include <SoftwareSerial.h>
+#include <Servo.h>
+
+Servo servo1;
+
+double angle_rad = PI/180.0;
+double angle_deg = 180.0/PI;
+
+int code;
+boolean code1 = false;
+boolean code2 = false;
+boolean code3 = false;
+boolean code4 = false;
+int password[4]= {2,4,5,3};
+int numpassword = 0;
+boolean passwrong = false;
+boolean passfinish = false;
+boolean puzzledone = false;
+
+
+int servopos = 0;
+
+void setup(){
+    pinMode(2,INPUT);
+    pinMode(10,OUTPUT);
+    pinMode(3,INPUT);
+    pinMode(4,INPUT);
+    pinMode(5,INPUT);
+    pinMode(6,INPUT);
+    servo1.attach(7);
+  servo1.write(0);
+
+    Serial.begin(9600);
+}
+void loop(){
+  
+ //!= (unless it's that number)
+    if(digitalRead(2)==HIGH){
+        if(numpassword != 0){
+          passwrong = true;
+          Serial.println("true");
+          }
+          numpassword++;
+        tone(10,262,250); // write to buzzer
+        delay(250);
+        
+    }
+    if(digitalRead(3)==HIGH){
+      
+      if(numpassword != 3){
+          passwrong = true;
+          Serial.println("true");
+          } else{
+            passfinish = true;
+            Serial.println("buena!");
+            }
+            numpassword++;
+        tone(10,294,250); // write to buzzer
+        delay(250);
+        
+    }
+    if(digitalRead(4)==HIGH){
+      if(numpassword != 1){
+          passwrong = true;
+          Serial.println("true");
+          }
+          numpassword++;
+        tone(10,330,250); // write to buzzer
+        delay(250);
+        
+    }
+    if(digitalRead(5)==HIGH){
+      if(numpassword != 2){
+          passwrong = true;
+          Serial.println("true");
+          }
+          numpassword++;
+        tone(10,349,250); // write to buzzer
+        delay(250);
+        
+    }
+
+    
+    //Serial.println(numpassword);
+
+    if(passwrong == true){
+      numpassword = 0;
+      passwrong = false;
+      }
+
+    
+    //Celebration- Reward
+    if(passfinish == true){
+      tone(10,392,250); // write to buzzer
+        delay(250);
+        tone(10,392,250); // write to buzzer
+        delay(250);
+        tone(10,392,250); // write to buzzer
+        delay(250);
+        tone(10,392,250); // write to buzzer
+        delay(250);
+      servo1.write (90);
+      delay(6000); //wait 60 seconds
+      servo1.write (90);
+        passfinish = false;
+      }
+  else {
+    servo1.write(0);    
+  }
+}
+
