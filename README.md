@@ -29,15 +29,26 @@ At the beginning I started out blocking modular maze pieces for the maze. My pla
  
  
  ![hedgeuv](https://user-images.githubusercontent.com/32567755/35229163-9e6b0eba-ff8a-11e7-8790-f4ec9a063baa.png)
-Example of A modular asset
+ 
+
+![modularbaic01](https://user-images.githubusercontent.com/32567755/35236522-8b0de864-ff9f-11e7-88a5-0827a3a58c95.JPG)
+Initial Prototype Modular assets
+![modularsmooth02](https://user-images.githubusercontent.com/32567755/35236521-8af22c28-ff9f-11e7-8764-71fbdc5f6c6a.JPG)
+Final modular assets. I made them smoother to create a more organic form
+ 
+# Example of A modular asset
 I divided the UV’s space into quarters, so that after creating the base materials I could composite them in photoshop in such a way to maintain tillable modular pieces while not using multiple material ID’s.
 I initially created the modular assets without being water tight, but light would bleed from the opposite side of the mesh. To correct this, I created a Lightmap.
 I used based/ reference textures from Textures and from these images I derived Normal, and Roughness maps through BitMaps2Material. I then added these newly created textures into substance Painter to create the desired tiling size. For the ground I used two different materials grass and dirt, blending them together within Substance Painter, I used the mirror symmetry to keep the textures tillable.
+
+
+![grass](https://user-images.githubusercontent.com/32567755/35236583-bd6a1170-ff9f-11e7-8f32-37da36312e5c.JPG)
+I used bitmap to material to make the initial materials, which I resized and further edited in substance painter.
 ![paintermodual design](https://user-images.githubusercontent.com/32567755/35229229-c65ed226-ff8a-11e7-9d4e-7e8896812797.JPG) 
 
 
 
-Original textures
+# Original textures
 The hedge textures were taken from https://www.textures.com/ . I used the following textures as a base to edit and create the textures I needed (all Royalty free, free to use textures).
 ![texturescom_grass0184_1_seamless_s](https://user-images.githubusercontent.com/32567755/35229268-e2bd102c-ff8a-11e7-837a-49dc3f41ccbf.png)
 
@@ -47,14 +58,17 @@ The hedge textures were taken from https://www.textures.com/ . I used the follow
 
 
 
-Initial Maze Design
+# Initial Maze Design
 I created the original maze design, and showed my group how the modular design works together. I also tried to experiment with maze designs, to created disorientation in the player. Luis remade the maze for the final project, but some of the level design made it into the final design.
 The red maze pieces were an idea to make the maze react to completing objectives, by reorganising its lay out (turning to close off routes and create new ones. This idea was later scrapped but turned into the portcullis idea.
 
+![initial design](https://user-images.githubusercontent.com/32567755/35236642-eb83a314-ff9f-11e7-8dc6-89c1a109f9ce.png)
+My initial Maze design
 
 
-Characters
-Gnome- https://skfb.ly/6uWTt 
+
+# Characters
+# Gnome- https://skfb.ly/6uWTt 
 I created one of the gnomes, used in the puzzle (look below). I made him in Z-brush from dynamic mesh in a T-Pose, I then re-topologised the mesh in Maya, and then created the textures in Substance Painter (including baking normal and ambient occlusion maps). As part of the initial design/ idea each gnome focused on a hear no evil, see no evil, and speak no evil; my model was the see no evil.
 
 ![gnome](https://user-images.githubusercontent.com/32567755/35229292-f396366c-ff8a-11e7-909a-47092c5a4ba9.JPG)
@@ -63,7 +77,7 @@ I created one of the gnomes, used in the puzzle (look below). I made him in Z-br
 
 
 
-Monster- https://skfb.ly/6voYM 
+# Monster- https://skfb.ly/6voYM 
 I created the main antagonist in Z-brush, re-topologise and UV unwrapped in Maya, and textured in Substance Painter. I created hollow eye sockets for eyes to re-create a nightmare I use to have, and took further inspiration from Death stranding, creating a metallic oil effect seeping from its body using the particle brush
 
 
@@ -82,7 +96,7 @@ I created the main antagonist in Z-brush, re-topologise and UV unwrapped in Maya
 
 
 
-Misc.
+# Misc.
 Lever Rigging and Animation- https://skfb.ly/6vQqT 
 As part of the portcullis (see more down in the blueprint section) I had to rig, animate and export an FBX animation of the activation of a lever. I rigged the lever in Maya, initially creating a contrain parent controller which I had to remove as the exported animation didn’t show in unreal. So I created an origin (Root) joint and a binding joint atop the root that drives the deformation; this means that the joint on top its parent is on its origin and has 0’s on its attribute editor and so is much easier to use as a control.
  
@@ -94,7 +108,7 @@ As part of the portcullis (see more down in the blueprint section) I had to rig,
 
 
 
-##Coding
+## Coding
 
 •	Pause
 
@@ -102,7 +116,7 @@ As part of the portcullis (see more down in the blueprint section) I had to rig,
  
  ![nightmarescreenshot02](https://user-images.githubusercontent.com/32567755/35229412-46f87cfc-ff8b-11e7-8995-102bd1d8b379.JPG)
 
-#Pause
+# Pause
 Implementing the pause system was first blueprint I have created. This was meant to be a minimalistic pause, where it would just pause the game
 
 1.	I had to use a sequence node to split the Event BeginPlay as the node was already in use for other blueprints.
