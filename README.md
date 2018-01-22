@@ -138,18 +138,18 @@ Implementing the pause system was first blueprint I have created. This was meant
 
 
 
-#Portcullis
+# Portcullis
 Part way through development we saw that the monster was too relentless, and hard to shake off as a player. We decided that an object needed to be created to block the monster during a close chase.
 
 The portcullis is formed of three meshes (Lever (Modelled by Gabby), Gate (Modelled by Gabby, textured by myself), and the wooden block the gate appears from (modelled and textured by me. In gameplay you approach a lever where a prompt will come up telling you can “Press E to raise the portcullis”. The blueprint was divided into trigger, widget, and animation.
 
-#Trigger
+# Trigger
 Run on a trigger box start and end overlap, which triggers the widget to be visible (set up similarly to the pause widget above), the triggers are also connected to a gate node, the start overlap opens the gate and the end overlap closes the gate, with the “Interact” button press activating the gate and the Gate animations. The interact button was added by going Project Settings -> Engine -> Input -> Action Mapping. Defining these inputs would be good to use in future game development workflows as it’ll make it easier to re-map a lot of game mechanics, instead of re-entering various blueprints to individually alter them.
 
-#Widget
+# Widget
 I reused the Pause widget method, but with a new widget.
 
-#Gate
+# Gate
 I used a sequence to split the triggered action, one triggers the lever animation (which I rigged and animated), another to play the timeline (animation for the gate), and the last for the sound. The timeline is linked drives the SetRelativeLocation of the gate, causing it to raise, which in turn is linked to a delay node which drives the reverse of the same timeline resetting the gate to open, and making it easier to iterate how long the gate stays close for.
 ![portculis](https://user-images.githubusercontent.com/32567755/35229497-7a04353c-ff8b-11e7-8367-735f6e8aac6d.JPG)
  
